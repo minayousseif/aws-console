@@ -6,7 +6,6 @@
   "engines": {
     "node": ">=8.10"
   },
-  "private": true,
   "description": "A simple utility to open the aws management console from the command line",
   "main": "index.js",
   "scripts": {
@@ -27,7 +26,7 @@
     "console access",
     "aws console",
     "aws management console",
-    "access to the aws console"
+    "access aws console"
   ],
   "dependencies": {
     "aws-sdk": "^2.596.0",
