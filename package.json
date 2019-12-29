@@ -1,13 +1,44 @@
 {
   "name": "aws-console",
   "version": "1.0.0",
-  "description": "a simple utility to open the aws management console from the command line",
-  "main": "index.js",
-  "author": "mina yousseif",
+  "author": "minayousseif",
   "license": "MIT",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "private": true,
+  "description": "A simple utility to open the aws management console from the command line",
+  "main": "index.js",
+  "scripts": {
+    "aws-console": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "aws-console": "./bin/aws-console"
+  },
+  "keywords": [
+    "aws-console",
+    "aws",
+    "federation",
+    "console",
+    "login",
+    "cli",
+    "cmd line",
+    "console access",
+    "aws console",
+    "aws management console",
+    "access to the aws console"
+  ],
   "dependencies": {
     "aws-sdk": "^2.596.0",
     "axios": "^0.19.0",
     "open": "^7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minayousseif/aws-console.git"
+  },
+  "bugs": {
+    "url": "https://github.com/minayousseif/aws-console/issues"
   }
 }
