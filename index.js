@@ -10,8 +10,9 @@ const AWS   = require('aws-sdk');
 const axios = require('axios');
 const open  = require('open');
 
-const signinUrl  = 'https://signin.aws.amazon.com/federation';
-const consoleUrl = 'https://console.aws.amazon.com/';
+const SIGNIN_URL  = 'https://signin.aws.amazon.com/federation';
+const CONSOLE_URL = 'https://console.aws.amazon.com/';
+const TTL_SECONDS = 43200;
 
 // https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html
 // https://aws.amazon.com/code/aws-management-console-federation-proxy-sample-use-case/
@@ -25,7 +26,7 @@ const sts = new AWS.STS();
 
 const federationTokenParams = {
   Name: 'TempUserSession',
-  DurationSeconds: 900,
+  DurationSeconds: TTL_SECONDS,
   Policy: JSON.stringify({
     Version: '2012-10-17', 
     Statement: [
@@ -53,7 +54,7 @@ sts.getFederationToken(federationTokenParams, (err, data) => {
     */
     const requestParams = {
       Action: 'getSigninToken',
-      DurationSeconds: 43200,
+      DurationSeconds: TTL_SECONDS,
       SessionType: 'json',
       Session: {
         sessionId: data.Credentials.AccessKeyId,
@@ -61,7 +62,7 @@ sts.getFederationToken(federationTokenParams, (err, data) => {
         sessionToken: data.Credentials.SessionToken
       }
     }
-    axios.get(signinUrl, {params: requestParams } ).then((resp) => {
+    axios.get(SIGNIN_URL, {params: requestParams } ).then((resp) => {
       // handle success
       if (resp && resp.status === 200 && resp.data) {
         if (resp.data.SigninToken) {
@@ -71,9 +72,9 @@ sts.getFederationToken(federationTokenParams, (err, data) => {
             sign-in token and the URL of the console to open, The "issuer" parameter is optional but 
             we are not using it since there is no custom identity broker, and we just using our cmd line
           */
-          const loginUrl = new URL(signinUrl);
+          const loginUrl = new URL(SIGNIN_URL);
           loginUrl.searchParams.append('Action', 'login');
-          loginUrl.searchParams.append('Destination', consoleUrl);
+          loginUrl.searchParams.append('Destination', CONSOLE_URL);
           loginUrl.searchParams.append('SigninToken', resp.data.SigninToken);
           open(loginUrl.href);
         } else {
