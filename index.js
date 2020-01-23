@@ -18,15 +18,16 @@ const TTL_SECONDS = 43200;
 // https://aws.amazon.com/code/aws-management-console-federation-proxy-sample-use-case/
 
 function doLogin(profile) {
-  /*
-  The following AWS STS API call creates a temporary session that returns 
-  a temporary security credentials and a session token. 
-  The policy grants permissions to the AWS management console.
-*/
   if (profile) {
     const credentials = new AWS.SharedIniFileCredentials({ profile });
     AWS.config.credentials = credentials;
   }
+
+  /*
+    The following AWS STS API call creates a temporary session that returns 
+    a temporary security credentials and a session token. 
+    The policy grants permissions to the AWS management console.
+  */
   const sts = new AWS.STS();
 
   const federationTokenParams = {
@@ -51,11 +52,11 @@ function doLogin(profile) {
       console.error(err);
     } else {
       /* 
-      On successful response from the aws sdk, we call the federation endpoint, 
-      passing the parameters created earlier and the session information as a JSON block. 
-      The request returns a sign-in token that's valid for 15 minutes. Signing in to 
-      the console with the token creates a session that is valid for 12 hours.
-    */
+        On successful response from the aws sdk, we call the federation endpoint, 
+        passing the parameters created earlier and the session information as a JSON block. 
+        The request returns a sign-in token that's valid for 15 minutes. Signing in to 
+        the console with the token creates a session that is valid for 12 hours.
+      */
       const requestParams = {
         Action: "getSigninToken",
         DurationSeconds: TTL_SECONDS,
@@ -73,11 +74,11 @@ function doLogin(profile) {
           if (resp && resp.status === 200 && resp.data) {
             if (resp.data.SigninToken) {
               /*
-            Once we have a sign-in token returned by the federation endpoint,
-            We then create the URL to open in the browser, which includes the
-            sign-in token and the URL of the console to open, The "issuer" parameter is optional but 
-            we are not using it since there is no custom identity broker, and we just using our cmd line
-          */
+        Once we have a sign-in token returned by the federation endpoint,
+        We then create the URL to open in the browser, which includes the
+        sign-in token and the URL of the console to open, The "issuer" parameter is optional but 
+        we are not using it since there is no custom identity broker, and we just using our cmd line
+      */
               const loginUrl = new URL(SIGNIN_URL);
               loginUrl.searchParams.append("Action", "login");
               loginUrl.searchParams.append("Destination", CONSOLE_URL);
@@ -102,9 +103,13 @@ const pkg = require("./package.json");
 
 const argv = require("yargs")
   .usage("Usage: $0 [-p profile_name]")
+  .option("profile", {
+    alias: "p",
+    type: "string",
+    description: "Use named profile in .aws/credentials",
+  })
   .version(pkg.version)
   .help("h")
-  .alias("h", "help")
-  .alias("p", "profile").argv;
+  .alias("h", "help").argv;
 
 doLogin(argv.profile);
