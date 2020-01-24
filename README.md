@@ -36,3 +36,6 @@ $ aws-console
 
 ### License: MIT
 
+### Contributing
+Unfortunately, I am not accepting any contributions or PRs (Pull Requests) at the moment. The package still WIP, And until I open the project for contribution, add a code of conduct, I'd recommenced requesting new features via the [issues section](https://github.com/minayousseif/aws-console/issues).
+
