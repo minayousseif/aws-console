@@ -41,6 +41,7 @@ Options:
 - If something doesn’t work, please [file an issue](https://github.com/minayousseif/aws-console/issues).
 
 ### Next Steps:
+- Add tests
 - Add MFA support
 
 ### License: MIT
