@@ -22,7 +22,16 @@ $ yarn global add aws-console
 Starting a new AWS console session in the default browser is as easy as:
 
 ```bash
-$ aws-console
+$ aws-console -h
+
+Usage: aws-console [options]
+
+A simple utility to open the aws management console from the command line
+
+Options:
+  -V, --version            output the version number
+  -p, --profile <profile>  use an aws profile name in ~/.aws/credentials
+  -h, --help               output usage information
 ```
 
 ### Compatibility:
@@ -32,7 +41,8 @@ $ aws-console
 - If something doesn’t work, please [file an issue](https://github.com/minayousseif/aws-console/issues).
 
 ### Next Steps:
-- Enable MFA
+- Add tests
+- Add MFA support
 
 ### License: MIT
 
