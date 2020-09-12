@@ -1,6 +1,6 @@
 {
   "name": "aws-console",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "minayousseif",
   "license": "MIT",
   "engines": {
@@ -30,10 +30,10 @@
     "access aws console"
   ],
   "dependencies": {
-    "aws-sdk": "^2.596.0",
-    "axios": "^0.19.0",
-    "commander": "^4.1.0",
-    "open": "^7.0.0"
+    "aws-sdk": "^2.751.0",
+    "axios": "^0.20.0",
+    "commander": "^6.1.0",
+    "open": "^7.2.1"
   },
   "repository": {
     "type": "git",
