@@ -4,7 +4,7 @@
   "author": "minayousseif",
   "license": "MIT",
   "engines": {
-    "node": ">=8.10"
+    "node": ">=10.24.1"
   },
   "description": "A simple utility to open the aws management console from the command line",
   "main": "index.js",
@@ -30,6 +30,7 @@
     "access aws console"
   ],
   "dependencies": {
+    "@aws-sdk/client-sts": "^3.13.1",
     "aws-sdk": "^2.892.0",
     "axios": "^0.21.1",
     "commander": "^6.2.0",
