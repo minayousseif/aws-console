@@ -11,7 +11,7 @@
   "scripts": {
     "aws-console": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/.bin/eslint index.js"
+    "lint": "./node_modules/.bin/eslint '**/*.js'"
   },
   "bin": {
     "aws-console": "./bin/aws-console"
@@ -30,10 +30,10 @@
     "access aws console"
   ],
   "dependencies": {
-    "aws-sdk": "^2.751.0",
-    "axios": "^0.20.0",
-    "commander": "^6.1.0",
-    "open": "^7.2.1"
+    "aws-sdk": "^2.892.0",
+    "axios": "^0.21.1",
+    "commander": "^6.2.0",
+    "open": "^8.0.6"
   },
   "repository": {
     "type": "git",
@@ -43,11 +43,10 @@
     "url": "https://github.com/minayousseif/aws-console/issues"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "8.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "2.2.1"
   }
 }
