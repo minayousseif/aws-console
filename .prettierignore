@@ -1,0 +1,5 @@
+# Ignore artifacts:
+build
+# Ignore dependencies:
+package.json
+node_modules
