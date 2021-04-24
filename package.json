@@ -33,7 +33,7 @@
     "@aws-sdk/client-sts": "^3.13.1",
     "@aws-sdk/credential-provider-node": "^3.13.1",
     "axios": "^0.21.1",
-    "commander": "^6.2.0",
+    "commander": "^7.2.0",
     "open": "^8.0.6"
   },
   "repository": {
